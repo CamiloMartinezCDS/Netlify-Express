@@ -7,7 +7,6 @@ const { renderVideoPage } = require('./logic');
 
 const router = express.Router();
 
-
 // Home route.
 router.get('/:videoId', renderVideoPage);
 
@@ -16,4 +15,3 @@ app.use('/.netlify/functions/server', router);  // path must route to lambda (ex
 
 module.exports = app;
 module.exports.handler = serverless(app);
-module.exports.renderVideoPage = renderVideoPage;
