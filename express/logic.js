@@ -15,7 +15,8 @@ const renderVideoPage = async (req, res) => {
     } else {
         const video = await axios.get(`${config.API_URL}/user-generated-content/${videoId}`, { headers: { 'Authorization': `APIKEY ${config.API_KEY}` } });
         if (video) {
-            const videoView = pug.renderFile(`${views}/views/videoPage.pug`, { video: video.data });
+            const { id, uid } = video.data
+            const videoView = pug.renderFile(`${views}/views/videoPage.pug`, { id, uid });
             console.log('VideoView => ', videoView);
             res.set('Content-Type', 'text/html');
             res.send(Buffer.from(videoView));
