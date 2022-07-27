@@ -17,14 +17,13 @@ router.get('/:videoId', async (req, res) => {
             res.redirect('http://immi.io');
         } else {
             const videoViewRoute = path.resolve('./src/views/videoPage.pug');
-            console.log('videoViewRoute => ', videoViewRoute)
             const url = `${config.API_URL}/user-generated-content/${videoId}`;
             const headers = { 'Authorization': `APIKEY ${config.API_KEY}` };
             console.log('URL => ', url, ' - HEADERS => ', headers)
             const video = await axios.get(url, { headers });
             if (video) {
-                const { id, uid } = video.data
-                const videoView = pug.renderFile(videoViewRoute, { id, uid });
+                const { id, uid, thumbnail } = video.data
+                const videoView = pug.renderFile(videoViewRoute, { id, uid, thumbnail });
                 console.log('VideoView => ', videoView);
                 res.set('Content-Type', 'text/html');
                 res.send(Buffer.from(videoView));
