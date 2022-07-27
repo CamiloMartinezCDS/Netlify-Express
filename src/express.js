@@ -18,7 +18,10 @@ router.get('/:videoId', async (req, res) => {
         } else {
             const videoViewRoute = path.resolve('./src/views/videoPage.pug');
             console.log('videoViewRoute => ', videoViewRoute)
-            const video = await axios.get(`${config.API_URL}/user-generated-content/${videoId}`, { headers: { 'Authorization': `APIKEY ${config.API_KEY}` } });
+            const url = `${config.API_URL}/user-generated-content/${videoId}`;
+            const headers = { 'Authorization': `APIKEY ${config.API_KEY}` };
+            console.log('URL => ', url, ' - HEADERS => ', headers)
+            const video = await axios.get(url, { headers });
             if (video) {
                 const { id, uid } = video.data
                 const videoView = pug.renderFile(videoViewRoute, { id, uid });
