@@ -5,5 +5,5 @@
   publish = "dist"
 
 # Include all files in all functions
-[functions."express"]
-  included_files = ["./src/views/**"]
+[functions]
+  included_files = ["src/views/**"]
