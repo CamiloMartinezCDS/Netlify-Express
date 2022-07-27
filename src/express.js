@@ -38,8 +38,7 @@ router.get('/:videoId', async (req, res) => {
 // Home route.
 router.get('/', (req, res) => {
     try {
-        console.log('views => ', views)
-        const viewLocation = `${views}/index.pug`;
+        const viewLocation = path.resolve('./src/views/index.pug');
         console.log('ViewLocation => ', viewLocation);
         const defaultView = pug.renderFile(viewLocation);
         console.log('defaultView => ', defaultView);
