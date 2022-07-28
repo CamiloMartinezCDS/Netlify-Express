@@ -22,6 +22,7 @@ router.get('/:videoId', async (req, res) => {
             const video = await axios.get(url, { headers });
             if (video) {
                 const { id, uid, thumbnail } = video.data
+                console.log('Id => ', id, ' uid => ', uid, ' thumbnail => ', thumbnail);
                 const videoView = pug.renderFile(videoViewRoute, { id, uid, thumbnail });
                 res.set('Content-Type', 'text/html');
                 res.send(Buffer.from(videoView));
