@@ -9,22 +9,24 @@
         </div>
         <script>
             const divTest = document.getElementById('test')
-            const videoId = '4d5bada5-c222-4194-ad9e-33966cd2369c'
-            window.onload = () => {
-                fetch(`https://master--soft-gumption-dab376.netlify.app/.netlify/functions/express/${videoId}`)
-                .then((response)=>{
-                    console.log('Response => ', response);
-                    return response.text();
-                })
-                .catch(e => console.log('Error => ', e))
+            const url = window.location;
+            // placeholder to show something if now videoId it's provided
+            const videoId = new URL(url).searchParams.get('videoId');
+            console.log('VIdeoId => ', videoId)
+            if (!videoId) {
+                // window.location.replace("https://immi.io");
+            } else {
+                window.onload = () => {
+                fetch(`https://master--soft-gumption-dab376.netlify.app/.netlify/functions/video/${videoId}`)
+                .then((response)=> response.text())
+                .catch(e => console.log('Error => ', Object.keys(e)))
                 .then(data => {
-                    console.log('in async');
-                    console.log('data => ', data);
                     divTest.innerHTML = data;
                     return data;
                 })
                 .catch(e => console.log('Parsing error => ', e));
             };
+            }
         </script>
     </body>
 </html>
