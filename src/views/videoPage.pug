@@ -1,18 +1,70 @@
-html
-  head
-    meta(property="og:title" content='Immi')
-    meta(property="og:site_name" content='IMMI')
-    meta(property="og:url" content='immi.io')
-    meta(property="og:url" content='dasdas')
-    meta(property="og:image" content=thumbnail)
-    meta(property="og:image:type" content='image/jpeg')
-    meta(property="og:image:width" content='1200')
-    meta(property="og:image:height" content='675')
-    meta(property="og:type" content='website')
-    meta(property="og:locale" content='en_US')
+doctype html(lang='en')
+head
+    meta(charset='UTF-8')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    |     
+    meta(charset='utf-8')
+    |     
+    title IMMI
+    |     
+    meta(property='og:title', content='IMMI')
+    |     
+    meta(property='og:site_name', content='Immi sharing')
+    |     
+    meta(property='og:url', content='immi.io')
+    |     
+    meta(property='og:description', content='description')
+    |     
+    meta(property='og:image', content=thumbnail)
+    |     
+    meta(property='og:image:secure_url', content='placeholder')
+    |     
+    meta(property='og:image:type', content='image/jpeg')
+    // recommend type
+    meta(property='og:image:alt', content='ALT_IMAGE')
+    |     
+    meta(property='og:image:width', content='1200')
+    // recommend size
+    meta(property='og:image:height', content='675')
+    // recommend size
+    meta(property='og:type', content='website')
+    |     
+    meta(property='og:locale', content='en_US')
+    |     
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css')
+    |     
+    link(rel='stylesheet', href='style.css')
+  |   
   body
-    block content
-    // Begin page content
-    main.container(role='main')
-      p.lead VideoId: #{id}
-      p.lead VideoUID: #{uid}
+    .body-wrapper
+      .general-layout
+        .left-colum
+          .left-column-wrapper
+            .logo-wrapper
+              img(style='width: 97px;', src='images/logo-removebg-preview.png', alt='IMMI logo')
+            |             
+            .qr-code
+              img(style='width: 93px;', src='images/QR-removebg-preview.png', alt='IMMI-QR')
+            |             
+            .download-button
+              img(style='width: 149px;', src='images/appStore-removebg-preview.png', alt='IMMI-store-link')
+        |         
+        .right-column
+          .right-column-wrapper
+            #video-container.video-container
+              iframe.resp-iframe(src='https://iframe.videodelivery.net/'uid)
+            |             
+            #video-link-container.video-link-container(style='display: flex;')
+              .video-input-wrapper
+                input#video-link-paragraph.video-input(type='text', readonly='true', value='immi.co/'id)
+              |               
+              button.video-link-button
+                p#copy-to-clipboard.video-link-button-label  Copy link 
+    |     
+    |     
+    script(src='script.js')
+    |     
+    script(src='https://embed.videodelivery.net/embed/sdk.latest.js')

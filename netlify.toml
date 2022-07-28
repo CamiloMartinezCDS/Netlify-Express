@@ -6,4 +6,4 @@
 
 # Include all files in all functions
 [functions]
-  included_files = ["src/views/**"]
+  included_files = ["src/views/**", "src/images/**"]
