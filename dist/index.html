@@ -11,7 +11,7 @@
             const divTest = document.getElementById('test')
             const videoId = '4d5bada5-c222-4194-ad9e-33966cd2369c'
             window.onload = () => {
-                fetch(`https://master--soft-gumption-dab376.netlify.app/.netlify/functions/express/`)
+                fetch(`https://master--soft-gumption-dab376.netlify.app/.netlify/functions/express/${videoId}`)
                 .then((response)=>{
                     console.log('Response => ', response);
                     return response.text();
