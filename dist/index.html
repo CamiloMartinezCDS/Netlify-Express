@@ -14,7 +14,7 @@
                 fetch(`https://master--soft-gumption-dab376.netlify.app/.netlify/functions/express/`)
                 .then((response)=>{
                     console.log('Response => ', response);
-                    return response.json();
+                    return response.text();
                 })
                 .catch(e => console.log('Error => ', e))
                 .then(data => {
