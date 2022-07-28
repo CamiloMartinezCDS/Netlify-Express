@@ -1,5 +1,7 @@
 doctype html(lang='en')
 head
+    style
+      include style.css
     meta(charset='UTF-8')
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -37,34 +39,32 @@ head
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css')
     |     
     link(rel='stylesheet', href='style.css')
-  |   
-  body
+    |   
+    body
     .body-wrapper
       .general-layout
         .left-colum
           .left-column-wrapper
             .logo-wrapper
-              img(style='width: 97px;', src='images/logo-removebg-preview.png', alt='IMMI logo')
+              img(style='width: 97px;', src='https://cdn-dev.immi.co/images/1658981879074-logo.png', alt='IMMI logo')
             |             
             .qr-code
-              img(style='width: 93px;', src='images/QR-removebg-preview.png', alt='IMMI-QR')
+              img(style='width: 93px;', src='https://cdn-dev.immi.co/images/1658981790792-QR.png', alt='IMMI-QR')
             |             
             .download-button
-              img(style='width: 149px;', src='images/appStore-removebg-preview.png', alt='IMMI-store-link')
+              img(style='width: 149px;', src='https://cdn-dev.immi.co/images/1658981840527-appStore.png', alt='IMMI-store-link')
         |         
         .right-column
           .right-column-wrapper
             #video-container.video-container
-              iframe.resp-iframe(src='https://iframe.videodelivery.net/'uid)
+              iframe.resp-iframe(src='https://iframe.videodelivery.net/'+uid)
             |             
             #video-link-container.video-link-container(style='display: flex;')
               .video-input-wrapper
-                input#video-link-paragraph.video-input(type='text', readonly='true', value='immi.co/'id)
+                input#video-link-paragraph.video-input(type='text', readonly='true', value='immi.co/'+id)
               |               
               button.video-link-button
                 p#copy-to-clipboard.video-link-button-label  Copy link 
     |     
-    |     
-    script(src='script.js')
-    |     
     script(src='https://embed.videodelivery.net/embed/sdk.latest.js')
+    script(type='text/javascript' src='./script.js')

@@ -19,12 +19,10 @@ router.get('/:videoId', async (req, res) => {
             const videoViewRoute = path.resolve('./src/views/videoPage.pug');
             const url = `${config.API_URL}/user-generated-content/${videoId}`;
             const headers = { 'Authorization': `APIKEY ${config.API_KEY}` };
-            console.log('URL => ', url, ' - HEADERS => ', headers)
             const video = await axios.get(url, { headers });
             if (video) {
                 const { id, uid, thumbnail } = video.data
                 const videoView = pug.renderFile(videoViewRoute, { id, uid, thumbnail });
-                console.log('VideoView => ', videoView);
                 res.set('Content-Type', 'text/html');
                 res.send(Buffer.from(videoView));
             } else {
@@ -32,8 +30,9 @@ router.get('/:videoId', async (req, res) => {
             }
         }
     } catch (error) {
-        console.log('Error => ', error);
-        res.send('Failed to render video page').statusCode(500);
+        // console.log('Error => ', error);
+        res.status(500);
+        res.send('Failed to render video page');
     }
 });
 
@@ -41,14 +40,13 @@ router.get('/:videoId', async (req, res) => {
 router.get('/', (req, res) => {
     try {
         const viewLocation = path.resolve('./src/views/index.pug');
-        console.log('ViewLocation => ', viewLocation);
         const defaultView = pug.renderFile(viewLocation);
-        console.log('defaultView => ', defaultView);
         res.set('Content-Type', 'text/html');
         res.send(Buffer.from(defaultView));
     } catch (error) {
         console.log('Error => ', error);
-        res.send('Failed to render defaut view').statusCode(500);
+        res.status(500);
+        res.send('Failed to render defaut view');
     }
 });
 
