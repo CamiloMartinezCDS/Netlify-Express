@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>IMMI-SHARING</title>
+    </head>
+    <body>
+        <div id="test">
+            Loading...
+        </div>
+        <script>
+            const divTest = document.getElementById('test')
+            const videoId = '4d5bada5-c222-4194-ad9e-33966cd2369c'
+            window.onload = () => {
+                fetch(`https://master--soft-gumption-dab376.netlify.app/.netlify/functions/express/`)
+                .then((response)=>{
+                    console.log('Response => ', response);
+                    return response.json();
+                })
+                .catch(e => console.log('Error => ', e))
+                .then(data => {
+                    console.log('in async');
+                    console.log('data => ', data);
+                    divTest.innerHTML = data;
+                    return data;
+                })
+                .catch(e => console.log('Parsing error => ', e));
+            };
+        </script>
+    </body>
+</html>
